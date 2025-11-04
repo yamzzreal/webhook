@@ -1,0 +1,9 @@
+[
+  {
+    "invoiceId": "INV-490725",
+    "userId": "8204777220",
+    "amount": 100000,
+    "status": "PENDING",
+    "created_at": "11/5/2025, 2:05:18 AM"
+  }
+]
