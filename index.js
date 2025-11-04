@@ -23,36 +23,6 @@ const app = express();
 app.use(express.json());
 
 app.post("/webhook/saweria", (req, res) => {
-  const data = req.body.data;
-
-  // Invoice diambil dari "message", "note", atau custom field
-  const invoiceId = data.note;
-  const amount = Number(data.amount);
-
-  let invoiceDB = loadInvoice();
-  let inv = invoiceDB.find(v => v.invoiceId === invoiceId);
-  if (!inv) return res.send("NO-INVOICE");
-
-  inv.status = "PAID";
-  saveInvoice(invoiceDB);
-
-  // Tambah ke saldo user
-  let users = loadUsers();
-  let user = users.find(u => u.id === inv.userId);
-  if (!user) {
-    user = { id: inv.userId, saldo: 0 };
-    users.push(user);
-  }
-  user.saldo += amount;
-  saveUsers(users);
-
-  // Notify user
-  bot.sendMessage(inv.userId,
-    `✅ Topup berhasil!\n+${amount} saldo telah ditambahkan`
-  );
-
-  res.send("OK");
-});
 
 let saldo = {};
 
@@ -102,6 +72,38 @@ function loadInvoice() {
 function saveInvoice(data) {
   fs.writeFileSync("./data/invoice.json", JSON.stringify(data, null, 2));
 }
+
+  app.post("/webhook/saweria", (req, res) => {
+  const data = req.body.data;
+
+  // Invoice diambil dari "message", "note", atau custom field
+  const invoiceId = data.note;
+  const amount = Number(data.amount);
+
+  let invoiceDB = loadInvoice();
+  let inv = invoiceDB.find(v => v.invoiceId === invoiceId);
+  if (!inv) return res.send("NO-INVOICE");
+
+  inv.status = "PAID";
+  saveInvoice(invoiceDB);
+
+  // Tambah ke saldo user
+  let users = loadUsers();
+  let user = users.find(u => u.id === inv.userId);
+  if (!user) {
+    user = { id: inv.userId, saldo: 0 };
+    users.push(user);
+  }
+  user.saldo += amount;
+  saveUsers(users);
+
+  // Notify user
+  bot.sendMessage(inv.userId,
+    `✅ Topup berhasil!\n+${amount} saldo telah ditambahkan`
+  );
+
+  res.send("OK");
+});
 // End Fungsi Topup
 try {
     premiumUsers = JSON.parse(fs.readFileSync(premiumUsersFile));
