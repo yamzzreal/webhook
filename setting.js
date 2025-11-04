@@ -11,8 +11,8 @@ module.exports = {
   "photoURL": "https://img1.pixhost.to/images/9116/646610663_skyzopedia.jpg",
 
 //========= SETTING URL WEBHOK ========\\
-  "url": "https://domainpanel.com", //Domain Panel
-  "port": "2325", // isi sesuai port server panel lu
+  "url": "https://yamzzoffc.my.id", //Domain Panel
+  "port": "2005", // isi sesuai port server panel lu
     //=================================\\
 //========[ SETTING PTLA && PTLC V1]=========\\
     //=================================\\
