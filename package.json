@@ -1,0 +1,20 @@
+{
+  "name": "PROTECT BY MALZXYZ",
+  "version": "3.0.0",
+  "description": "Telegram bot menggunakan Node.js dengan fitur premium dan struktur modular",
+  "main": "start.js",
+  "scripts": {
+    "start": "node start.js"
+  },
+  "author": "Malzxyz",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "chalk": "^4.1.2",
+    "crypto": "^1.0.1",
+    "express": "^5.1.0",
+    "fs-extra": "^11.2.0",
+    "node-telegram-bot-api": "^0.61.0",
+    "ssh2": "^1.17.0"
+  }
+}
