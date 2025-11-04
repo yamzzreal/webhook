@@ -22,8 +22,6 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 
-app.post("/webhook/saweria", (req, res) => {
-
 let saldo = {};
 
 let bot; // bot instance
@@ -7368,6 +7366,6 @@ bot.onText(/^\/uninstallprotectall (.+)$/, async (msg, match) => {
 }
 
 app.listen(port, () => {
-  console.log(`🚀 Server aktif di ${url}:${port}`);
+  console.log(`🚀 Server aktif di port ${port}`);
 });
 module.exports = { setBotInstance };
