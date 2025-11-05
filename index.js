@@ -271,6 +271,7 @@ Gunakan /menu untuk melihat daftar perintah.
 // ─── /menu ───────────────────────────────
 bot.onText(/\/menu/, (msg) => {
   const chatId = msg.chat.id;
+  const idChat = msg.from.chaId;
 
   bot.sendPhoto(chatId, "https://i.ibb.co.com/BKnXLYLf/20251104-140428.jpg", { 
     caption: `
@@ -279,6 +280,7 @@ bot.onText(/\/menu/, (msg) => {
 ┃ ϟ ɪɴғᴏʀᴍᴀᴛɪᴏɴ : @aboutyamzz
 ┃ ϟ ᴠᴇʀsɪ : 2.0
 ┃ ϟ ʟᴀɴɢᴜᴀɢᴇ : ᴊᴀᴠᴀsᴄʀɪᴘᴛ
+   ID CHAT : ${idChat}
 ┗━━━━━━━━━━━━━━━━❍
 
 Pilih menu yang tersedia di bawah: 👇`,
